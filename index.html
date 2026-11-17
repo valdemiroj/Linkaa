@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#150629">
+<title>Ron Linkaa - Grupos de WhatsApp</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#150629;--card:#2a1357;--line:#ffffff1f;--lil:#c4b5fd;--pk:#e879f9;--tx:#f5f0ff;--mut:#bfa8ec}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;font:16px/1.6 Poppins,system-ui,sans-serif;color:var(--tx);background:radial-gradient(900px 500px at 10% -5%,#6d28d9aa,transparent),radial-gradient(700px 500px at 100% 5%,#c026d355,transparent),var(--bg) fixed}
+a{color:var(--lil);text-decoration:none}
+h1,h2,h3,.logo{font-family:'Baloo 2',cursive;line-height:1.15;margin:0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:50;background:#150629d9;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-size:30px;font-weight:800;background:linear-gradient(90deg,#fff,#f0abfc 55%,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.top nav{display:flex;align-items:center;gap:20px}
+.top nav a:not(.btn){font-weight:600;color:var(--tx)}
+.btn,.b{display:inline-block;padding:11px 22px;border:0;border-radius:999px;background:linear-gradient(135deg,#a855f7,#d946ef);color:#fff!important;font:700 15px Poppins,sans-serif;cursor:pointer;box-shadow:0 8px 24px #a855f755;transition:.2s;white-space:nowrap}
+.btn:hover,.b:hover{transform:translateY(-2px)}
+.b:disabled{opacity:.6}
+.big{width:100%;margin-top:14px}
+.hero{text-align:center;padding:60px 0 30px}
+.hero h1{font-size:clamp(34px,6vw,62px);font-weight:800}
+.hero h1 span{background:linear-gradient(90deg,#f0abfc,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);max-width:560px;margin:14px auto 26px}
+.sf{display:flex;max-width:580px;margin:0 auto 18px;background:#ffffff14;border:1px solid var(--line);border-radius:999px;padding:6px}
+.sf input{flex:1;min-width:0;background:none;border:0;outline:0;color:#fff;padding:0 18px;font:16px Poppins,sans-serif}
+h2{font-size:28px;margin:44px 0 16px}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.cat{display:flex;flex-direction:column;align-items:center;padding:16px 8px;border-radius:20px;background:linear-gradient(160deg,#3b1a78,#2a1357);border:1px solid var(--line);color:#fff;text-align:center;transition:.2s}
+.cat:hover{transform:translateY(-4px);border-color:var(--pk)}
+.cat i{font-size:32px;font-style:normal}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;color:var(--tx);transition:.2s}
+.card:hover{transform:translateY(-5px);border-color:var(--pk);box-shadow:0 14px 34px #7c3aed55}
+.card img,.ph{width:72px;height:72px;border-radius:50%;object-fit:cover;background:#4c1d95;border:3px solid #8b5cf6;margin-bottom:10px;display:block}
+.ph{display:flex;align-items:center;justify-content:center;font-size:30px}
+.card h3{font-size:20px;margin-bottom:4px}
+.card p{margin:0;font-size:14px;color:var(--mut);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tag{display:inline-block;margin:8px 6px 0 0;padding:2px 12px;font-size:12px;border-radius:99px;background:#a855f733;color:var(--lil)}
+.more{display:block;margin:28px auto}
+.gp{max-width:760px;margin:36px auto;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:34px;box-shadow:0 20px 60px #0008}
+.gp h1{font-size:clamp(28px,5vw,42px);margin:14px 0 6px}
+.pb{color:#e9ddff}
+.pb img,.pi{display:block;width:150px;height:150px;border-radius:50%;object-fit:cover;margin:10px auto 18px;border:4px solid var(--pk);box-shadow:0 0 0 6px #a855f744,0 12px 40px #d946ef66}
+.pb h3,.gp h3{font-size:22px;margin:26px 0 8px;color:#f0abfc}
+.pb ul{list-style:none;padding:0;margin:0}
+.pb li{position:relative;padding:10px 14px 10px 42px;margin:8px 0;border-radius:14px;background:#ffffff0f}
+.pb li:before{content:"✔";position:absolute;left:14px;color:#4ade80}
+.join{display:block;margin-top:28px;padding:18px;text-align:center;border-radius:18px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff!important;font:800 22px 'Baloo 2',cursive;box-shadow:0 12px 34px #25d36655;transition:.2s}
+.join:hover{transform:translateY(-3px)}
+.l{display:block;font-weight:600;margin:18px 0 6px}
+.gp input:not([type=checkbox]),.gp textarea,.gp select{width:100%;padding:12px 14px;border-radius:14px;border:1px solid #ffffff33;background:#ffffff14;color:#fff;font:16px Poppins,sans-serif;outline:0}
+.gp select option{color:#000}
+.row{display:flex;gap:8px}
+.rule{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;margin:8px 0;border-radius:14px;background:#ffffff0f;cursor:pointer}
+.rule input{margin-top:6px;accent-color:#d946ef}
+.msg{margin:14px 0;padding:12px 16px;border-radius:14px}
+.ok{background:#16a34a44}.er{background:#dc262644}
+.w{position:absolute;left:-9999px}
+footer{margin-top:60px;padding:30px 18px;text-align:center;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:640px){.top nav a:not(.btn){display:none}.gp{padding:22px;margin:18px 0}.hero{padding-top:36px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="logo" href="#/">Ron Linkaa</a>
+<nav><a href="#/">Início</a><a class="btn" href="#/divulgar">+ Divulgar grupo</a></nav>
+</div></header>
+<main class="wrap" id="app"></main>
+<footer>© Ron Linkaa. Não somos afiliados ao WhatsApp. Cada administrador é responsável pelo seu grupo.</footer>
+
+<script>
+const API='COLE_AQUI_A_URL_DO_APPS_SCRIPT';
+const E={amizade:'🤝',musica:'🎵',filme:'🎬',serie:'📺',negoc:'💼',estud:'📚',jogo:'🎮',nam:'💕',relig:'🙏',mocamb:'🇲🇿',futebol:'⚽',tecn:'💻',humor:'😂',emprego:'🧑‍💼',moda:'👗',culin:'🍲',viag:'✈️',anime:'🎌',saude:'💪'};
+const R=['Respeitar todos os membros','Proibido spam e propaganda sem autorização do admin','Proibido conteúdo adulto, violento ou ilegal','Proibidos insultos, discriminação e discurso de ódio','Manter-se no assunto do grupo','Não partilhar dados pessoais de outras pessoas','Proibidos golpes, esquemas e links suspeitos','Não encher o grupo de mensagens repetidas'];
+const $=s=>document.querySelector(s),app=$('#app');
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const api=p=>fetch(API+'?'+new URLSearchParams(p)).then(r=>r.json());
+const ic=n=>{n=n.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');for(const k in E)if(n.includes(k))return E[k];return'💬'};
+const pic=g=>g.img?`<img src="${esc(g.img)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:'<span class="ph">💬</span>';
+const card=g=>`<a class="card" href="#/g/${esc(g.id)}">${pic(g)}<h3>${esc(g.nome)}</h3><p>${esc(g.desc)}</p><span class="tag">${esc(g.cat)}</span></a>`;
+const sf=()=>`<form class="sf" onsubmit="location.hash='#/q/'+encodeURIComponent(this.q.value);return false"><input name="q" placeholder="Pesquisar: filmes, futebol, negócios..."><button class="btn">Pesquisar</button></form>`;
+const empty=id=>{const e=$('#'+id);if(e&&!e.children.length)e.insertAdjacentHTML('afterend','<p style="color:var(--mut)">Ainda sem grupos aqui.</p>')};
+
+async function fill(id,p){
+  const d=await api(p);const el=$('#'+id);
+  if(el){el.innerHTML=d.items.map(card).join('');empty(id)}
+  return d;
+}
+
+async function home(){
+  app.innerHTML=`<section class="hero"><h1>Encontre o seu <span>grupo de WhatsApp</span></h1><p>Grupos organizados por categoria. Procure, escolha e entre em segundos. Tem um grupo? Divulgue grátis.</p>${sf()}<a class="btn" href="#/divulgar">🚀 Divulgar meu grupo</a></section>
+  <h2>🗂️ Categorias</h2><div class="cats" id="cats"></div>
+  <div id="ds" hidden><h2>⭐ Em destaque</h2><div class="grid" id="gd"></div></div>
+  <h2>🔥 Mais acessados</h2><div class="grid" id="gp"></div>
+  <h2>🆕 Grupos novos</h2><div class="grid" id="gn"></div>`;
+  api({a:'cats'}).then(d=>$('#cats').innerHTML=d.cats.map(c=>`<a class="cat" href="#/c/${encodeURIComponent(c)}"><i>${ic(c)}</i><b>${esc(c)}</b></a>`).join(''));
+  fill('gd',{a:'list',sort:'dest',n:8}).then(d=>{if(d.items.length)$('#ds').hidden=false});
+  fill('gp',{a:'list',sort:'top',n:8});
+  fill('gn',{a:'list',n:12});
+}
+
+async function lista(r,a){
+  app.innerHTML=`<h2>${r==='c'?ic(a)+' '+esc(a):'🔎 Resultados para “'+esc(a)+'”'}</h2>${sf()}<div class="grid" id="l"></div><button class="btn more" id="mo" hidden>Ver mais grupos</button>`;
+  let p=1;
+  const go=async()=>{
+    const d=await api({a:'list',[r==='c'?'cat':'q']:a,p,n:12});
+    if(!d.items.length&&p===1)return app.insertAdjacentHTML('beforeend','<p style="color:var(--mut)">Nenhum grupo encontrado.</p>');
+    $('#l').insertAdjacentHTML('beforeend',d.items.map(card).join(''));
+    $('#mo').hidden=p*12>=d.total;p++;
+  };
+  $('#mo').onclick=go;go();
+}
+
+async function group(id){
+  app.innerHTML='<p style="padding:40px 0">A carregar...</p>';
+  const d=await api({a:'get',id});
+  if(!d.ok){app.innerHTML='<article class="gp"><h1>Grupo não encontrado</h1><a class="tag" href="#/">← Todos os grupos</a></article>';return}
+  const g=d.g;document.title=g.nome+' · Ron Linkaa';
+  app.innerHTML=`<article class="gp"><a class="tag" href="#/">← Todos os grupos</a><h1>${esc(g.nome)}</h1><a class="tag" href="#/c/${encodeURIComponent(g.cat)}">${esc(g.cat)}</a>
+  <div class="pb">${g.img?`<img src="${esc(g.img)}" alt="${esc(g.nome)}" referrerpolicy="no-referrer">`:''}<p>${esc(g.desc).replace(/\n/g,'<br>')}</p>
+  ${g.regras.length?'<h3>📜 Regras do grupo</h3><ul>'+g.regras.map(x=>`<li>${esc(x)}</li>`).join('')+'</ul>':''}
+  <a class="join" id="j" href="${esc(g.link)}" target="_blank" rel="noopener nofollow">🚀 Entrar no grupo</a></div></article>`;
+  $('#j').onclick=()=>fetch(API+'?a=click&id='+encodeURIComponent(id),{mode:'no-cors',keepalive:true});
+}
+
+function form(){
+  app.innerHTML=`<article class="gp"><h1>🚀 Divulgar meu grupo</h1><p style="color:var(--mut)">Cole o link de convite do seu grupo. Buscamos o nome e a foto automaticamente.</p>
+  <label class="l">🔗 Link do grupo</label><div class="row"><input id="lk" placeholder="https://chat.whatsapp.com/..."><button class="b" id="bs">Buscar</button></div><div id="m"></div>
+  <div id="st" hidden><img class="pi" id="pi" hidden><h3 id="pn" style="text-align:center"></h3>
+  <label class="l">📝 Descrição do grupo</label><textarea id="dsc" rows="4" maxlength="500" placeholder="Fale sobre o grupo: tema, quem pode entrar..."></textarea>
+  <label class="l">🗂️ Categoria</label><select id="ct"></select>
+  <label class="l">📜 Regras (desmarque as que não se aplicam)</label><div id="rl"></div>
+  <div class="row"><input id="nr" maxlength="160" placeholder="Adicionar regra personalizada"><button class="b" id="ar">+</button></div>
+  <label class="rule" style="margin-top:18px"><input type="checkbox" id="ck"><span>Sou administrador deste grupo e ele não tem conteúdo ilegal ou adulto.</span></label>
+  <input class="w" id="wb" tabindex="-1" autocomplete="off"><button class="b big" id="pb">🚀 Publicar grupo</button></div></article>`;
+  const msg=(t,ok)=>{$('#m').innerHTML=t?`<div class="msg ${ok?'ok':'er'}">${esc(t)}</div>`:''};
+  const rule=t=>$('#rl').insertAdjacentHTML('beforeend',`<label class="rule"><input type="checkbox" checked><span>${esc(t)}</span></label>`);
+  R.forEach(rule);
+  api({a:'cats'}).then(d=>$('#ct').innerHTML=d.cats.map(c=>`<option>${esc(c)}</option>`).join(''));
+  let cur='';
+  $('#bs').onclick=async()=>{
+    const l=$('#lk').value.trim();msg('');
+    if(!l.startsWith('https://chat.whatsapp.com/'))return msg('Cole um link válido: https://chat.whatsapp.com/...');
+    $('#bs').disabled=true;
+    try{const d=await api({a:'preview',link:l});if(!d.ok)return msg(d.error);cur=l;$('#pn').textContent=d.name;const i=$('#pi');i.hidden=!d.img;if(d.img){i.referrerPolicy='no-referrer';i.src=d.img}$('#st').hidden=false}
+    catch(e){msg('Erro de ligação. Tente de novo.')}finally{$('#bs').disabled=false}
+  };
+  $('#ar').onclick=()=>{const v=$('#nr').value.trim();if(v){rule(v);$('#nr').value=''}};
+  $('#pb').onclick=async()=>{
+    if(!$('#ck').checked)return msg('Confirme que é administrador do grupo.');
+    const d=$('#dsc').value.trim();if(d.length<15)return msg('A descrição precisa de pelo menos 15 caracteres.');
+    const rs=[...document.querySelectorAll('#rl .rule')].filter(l=>l.firstChild.checked).map(l=>l.lastChild.textContent);
+    $('#pb').disabled=true;msg('');
+    try{
+      const x=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({link:cur,desc:d,cat:$('#ct').value,regras:rs,website:$('#wb').value})}).then(r=>r.json());
+      if(!x.ok){msg(x.error);$('#pb').disabled=false;return}
+      $('#st').hidden=true;msg(x.moderado?'Grupo enviado! Será publicado após aprovação.':'Grupo publicado! 🎉',true);
+      if(x.id&&!x.moderado)$('#m').insertAdjacentHTML('beforeend',`<a class="btn" href="#/g/${esc(x.id)}">Ver página do grupo →</a>`);
+    }catch(e){msg('Erro de ligação. Tente de novo.');$('#pb').disabled=false}
+  };
+}
+
+function route(){
+  const h=location.hash.slice(2).split('/'),r=h[0],a=decodeURIComponent(h.slice(1).join('/'));
+  document.title='Ron Linkaa - Grupos de WhatsApp';scrollTo(0,0);
+  if(r==='g')group(a);else if(r==='divulgar')form();else if(r==='c'||r==='q')lista(r,a);else home();
+  if(parent!==window)parent.postMessage({ron:location.hash},'*');
+}
+addEventListener('hashchange',route);route();
+</script>
+</body>
+</html>
