@@ -75,7 +75,7 @@ footer{margin-top:60px;padding:30px 18px;text-align:center;color:var(--mut);font
 <footer>© Ron Linkaa. Não somos afiliados ao WhatsApp. Cada administrador é responsável pelo seu grupo.</footer>
 
 <script>
-const API='https://script.google.com/macros/s/AKfycbwxVi94b_Gs_pIUp7qixZfxC2abXGjamCr1CCw9_BDeaIi6Oi0VMeeMCRlxvDAPCZVTQQ/exec';
+const API='https://script.google.com/macros/s/AKfycbzwv8r3WimDbs8_5ov06rScNv2wcw7-fcavUvMmmF0lo8A7WlyIqbYLe9C5KQZVUrJO0w/exec';
 const E={amizade:'🤝',musica:'🎵',filme:'🎬',serie:'📺',negoc:'💼',estud:'📚',jogo:'🎮',nam:'💕',relig:'🙏',mocamb:'🇲🇿',futebol:'⚽',tecn:'💻',humor:'😂',emprego:'🧑‍💼',moda:'👗',culin:'🍲',viag:'✈️',anime:'🎌',saude:'💪'};
 const R=['Respeitar todos os membros','Proibido spam e propaganda sem autorização do admin','Proibido conteúdo adulto, violento ou ilegal','Proibidos insultos, discriminação e discurso de ódio','Manter-se no assunto do grupo','Não partilhar dados pessoais de outras pessoas','Proibidos golpes, esquemas e links suspeitos','Não encher o grupo de mensagens repetidas'];
 const $=s=>document.querySelector(s),app=$('#app');
@@ -133,6 +133,7 @@ function form(){
   app.innerHTML=`<article class="gp"><h1>🚀 Divulgar meu grupo</h1><p style="color:var(--mut)">Cole o link de convite do seu grupo. Buscamos o nome e a foto automaticamente.</p>
   <label class="l">🔗 Link do grupo</label><div class="row"><input id="lk" placeholder="https://chat.whatsapp.com/..."><button class="b" id="bs">Buscar</button></div><div id="m"></div>
   <div id="st" hidden><img class="pi" id="pi" hidden><h3 id="pn" style="text-align:center"></h3>
+  <input id="nm" maxlength="100" placeholder="Nome do grupo (escreva aqui)" style="margin-top:10px" hidden>
   <label class="l">📝 Descrição do grupo</label><textarea id="dsc" rows="4" maxlength="500" placeholder="Fale sobre o grupo: tema, quem pode entrar..."></textarea>
   <label class="l">🗂️ Categoria</label><select id="ct"></select>
   <label class="l">📜 Regras (desmarque as que não se aplicam)</label><div id="rl"></div>
@@ -148,17 +149,28 @@ function form(){
     const l=$('#lk').value.trim();msg('');
     if(!l.startsWith('https://chat.whatsapp.com/'))return msg('Cole um link válido: https://chat.whatsapp.com/...');
     $('#bs').disabled=true;
-    try{const d=await api({a:'preview',link:l});if(!d.ok)return msg(d.error);cur=l;$('#pn').textContent=d.name;const i=$('#pi');i.hidden=!d.img;if(d.img){i.referrerPolicy='no-referrer';i.src=d.img}$('#st').hidden=false}
+    try{
+      const d=await api({a:'preview',link:l});
+      if(!d.ok)return msg(d.error);
+      cur=l;
+      $('#pn').textContent=d.name;
+      $('#pn').hidden=!!d.manual;
+      $('#nm').hidden=!d.manual;
+      if(d.manual)msg('Não foi possível ler o nome automaticamente. Escreva o nome do grupo abaixo.');
+      const i=$('#pi');i.hidden=!d.img;if(d.img){i.referrerPolicy='no-referrer';i.src=d.img}
+      $('#st').hidden=false;
+    }
     catch(e){msg('Erro de ligação. Tente de novo.')}finally{$('#bs').disabled=false}
   };
   $('#ar').onclick=()=>{const v=$('#nr').value.trim();if(v){rule(v);$('#nr').value=''}};
   $('#pb').onclick=async()=>{
+    if(!$('#nm').hidden&&!$('#nm').value.trim())return msg('Escreva o nome do grupo.');
     if(!$('#ck').checked)return msg('Confirme que é administrador do grupo.');
     const d=$('#dsc').value.trim();if(d.length<15)return msg('A descrição precisa de pelo menos 15 caracteres.');
     const rs=[...document.querySelectorAll('#rl .rule')].filter(l=>l.firstChild.checked).map(l=>l.lastChild.textContent);
     $('#pb').disabled=true;msg('');
     try{
-      const x=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({link:cur,desc:d,cat:$('#ct').value,regras:rs,website:$('#wb').value})}).then(r=>r.json());
+      const x=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({link:cur,nome:$('#nm').value,desc:d,cat:$('#ct').value,regras:rs,website:$('#wb').value})}).then(r=>r.json());
       if(!x.ok){msg(x.error);$('#pb').disabled=false;return}
       $('#st').hidden=true;msg(x.moderado?'Grupo enviado! Será publicado após aprovação.':'Grupo publicado! 🎉',true);
       if(x.id&&!x.moderado)$('#m').insertAdjacentHTML('beforeend',`<a class="btn" href="#/g/${esc(x.id)}">Ver página do grupo →</a>`);
