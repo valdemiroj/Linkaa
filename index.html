@@ -140,7 +140,7 @@ function form(){
   <div class="row"><input id="nr" maxlength="160" placeholder="Adicionar regra personalizada"><button class="b" id="ar">+</button></div>
   <label class="rule" style="margin-top:18px"><input type="checkbox" id="ck"><span>Sou administrador deste grupo e ele não tem conteúdo ilegal ou adulto.</span></label>
   <input class="w" id="wb" tabindex="-1" autocomplete="off"><button class="b big" id="pb">🚀 Publicar grupo</button></div></article>`;
-  const msg=(t,ok)=>{$('#m').innerHTML=t?`<div class="msg ${ok?'ok':'er'}">${esc(t)}</div>`:''};
+  const msg=(t,ok)=>{$('#m').innerHTML=t?`<div class="msg ${ok?'ok':'er'}">${esc(t)}</div>`:'';if(t)$('#m').scrollIntoView({behavior:'smooth',block:'center'})};
   const rule=t=>$('#rl').insertAdjacentHTML('beforeend',`<label class="rule"><input type="checkbox" checked><span>${esc(t)}</span></label>`);
   R.forEach(rule);
   api({a:'cats'}).then(d=>$('#ct').innerHTML=d.cats.map(c=>`<option>${esc(c)}</option>`).join(''));
